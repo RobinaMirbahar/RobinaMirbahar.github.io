@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robina Mirbahar — AI Researcher, Cloud Solutions Architect & Author</title>
-  <meta name="description" content="Official portfolio of Robina Mirbahar — Google Developer Expert (AI & Cloud), Pakistan Lead for IEEE CS R8 AI Caravan, and Author of 'AI Engineering'.">
+  <title>Robina Mirbahar — AI Researcher, Cloud Solutions Architect & Co-Author</title>
+  <meta name="description" content="Official portfolio of Robina Mirbahar — Google Developer Expert (AI & Cloud), Pakistan Lead for IEEE CS R8 AI Caravan, and Co-Author of 'AI Engineering'.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,12 +28,141 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 20px 14px 60px 14px;
+      padding: 85px 14px 60px 14px;
+    }
+
+    /* TOP NAVBAR (Inspired by Amit K Das, themed for Robina) */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-bottom: 1px solid var(--border-color);
+      height: 64px;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-brand:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4285F4;
+      display: inline-block;
+      box-shadow: 0 0 8px rgba(66, 133, 244, 0.8);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: #21262d;
+    }
+
+    .nav-cv-btn {
+      color: #ffffff !important;
+      background: #238636 !important;
+      font-weight: 600 !important;
+      border: 1px solid #2ea043;
+      padding: 6px 14px !important;
+      margin-left: 6px;
+    }
+
+    .nav-cv-btn:hover {
+      background: #2ea043 !important;
+      box-shadow: 0 2px 8px rgba(46, 160, 67, 0.4);
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #161b22;
+        flex-direction: column;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 8px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        width: 100%;
+        text-align: left;
+      }
+      .nav-cv-btn {
+        margin-left: 0;
+        text-align: center !important;
+      }
+      .nav-toggle {
+        display: block;
+      }
     }
 
     .container {
@@ -331,11 +460,30 @@
 </head>
 <body>
 
+  <!-- TOP NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-dot"></span>
+        Robina Mirbahar
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#awards">Awards & Honors</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="CV_Robina_Mirbahar.pdf" target="_blank" class="nav-cv-btn">CV (PDF)</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
     <div class="google-stripe"></div>
 
     <!-- HEADER / PROFILE -->
-    <header class="header-section">
+    <header class="header-section" id="top">
       <img src="https://raw.githubusercontent.com/RobinaMirbahar/RobinaMirbahar/main/ProfileImages/Hi-Robina.gif" height="85" width="85" alt="Hi Robina" class="profile-gif">
 
       <h1>Robina Mirbahar</h1>
@@ -344,7 +492,7 @@
       <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=4285F4&center=true&vCenter=true&width=750&lines=Google+Developer+Expert+(AI+%26+Cloud);Co-Author+of+'AI+Engineering'+(2026);Instructor+%40+IEEE+AI+Caravan+(94+Countries);Women+Techmakers+Ambassador;Multi-Cloud+%26+Generative+AI+Solutions+Architect" alt="Robina Mirbahar - Dynamic Title" class="typing-headline" />
 
       <div class="location-tags">
-        📍 Hyderabad, Pakistan &nbsp;|&nbsp; 🥑 GDE (AI & Cloud) &nbsp;|&nbsp; 🇵🇰 IEEE AI Caravan PK Lead &nbsp;|&nbsp; 📚 Published Author &nbsp;|&nbsp; 🎤 Global Speaker
+        📍 Hyderabad, Pakistan &nbsp;|&nbsp; 🥑 GDE (AI & Cloud) &nbsp;|&nbsp; 🇵🇰 IEEE AI Caravan PK Lead &nbsp;|&nbsp; 📚 Published Co-Author &nbsp;|&nbsp; 🎤 Global Speaker
       </div>
 
       <!-- Social Badges -->
@@ -363,15 +511,15 @@
     </header>
 
     <!-- ABOUT ME -->
-    <section>
+    <section id="about">
       <h2>👩💼 About Me</h2>
       <p>
-        AI Researcher, Cloud Solutions Architect, and Author with 6+ years of experience designing scalable multi-cloud infrastructure and building production-grade Generative AI systems. I bridge cutting-edge AI research with production engineering while empowering global tech communities and championing women in STEM.
+        AI Researcher, Cloud Solutions Architect, and Co-Author with 6+ years of experience designing scalable multi-cloud infrastructure and building production-grade Generative AI systems. I bridge cutting-edge AI research with production engineering while empowering global tech communities and championing women in STEM.
       </p>
       <ul>
         <li>🤖 <strong>Agentic AI & Generative Systems</strong> — Multi-Agent Loops · Advanced RAG · Gemma & Gemini APIs · LangGraph</li>
         <li>🇵🇰 <strong>Pakistan Lead @ IEEE AI Caravan</strong> — Leading national initiatives across a global network of 94 countries</li>
-        <li>📚 <strong>Published Author</strong> — Author of <em>"AI Engineering: From Classical ML to RAG & Agentic AI Systems"</em> (2026)</li>
+        <li>📚 <strong>Published Co-Author</strong> — Co-Author of <em>"AI Engineering: From Classical ML to RAG & Agentic AI Systems"</em> (2026)</li>
         <li>🔬 <strong>Peer Reviewer</strong> — Women in Machine Learning (WiML) at <strong>NeurIPS 2026</strong></li>
         <li>☁️ <strong>Multi-Cloud Architect</strong> — Google Cloud Platform · AWS · Microsoft Azure · Kubernetes · Terraform</li>
         <li>🚀 <strong>Mentor @ Google for Startups</strong> — Advising AI/ML founders on architecture and scalability</li>
@@ -380,7 +528,7 @@
     </section>
 
     <!-- PUBLISHED LITERATURE -->
-    <section>
+    <section id="book">
       <h2>📖 Published Literature</h2>
       <div class="book-card">
         <a href="https://amazon.com/dp/B0GWCZWCF4" target="_blank">
@@ -395,7 +543,7 @@
     </section>
 
     <!-- HONORS & AWARDS -->
-    <section>
+    <section id="awards">
       <h2>🌟 Major Honors & Industry Awards</h2>
 
       <div class="award-item purple">
@@ -466,10 +614,10 @@
       </div>
     </section>
 
-    <!-- WTM HYDERABAD -->
-    <section>
-      <h2>🌟 Women Techmakers Hyderabad Pakistan</h2>
-      <p>As the <strong>Women Techmakers Ambassador</strong> for Hyderabad, I lead community initiatives to make women in technology more visible, supported, and equipped to lead.</p>
+    <!-- WTM HYDERABAD & LEADERSHIP -->
+    <section id="leadership">
+      <h2>🌟 Women Techmakers & Community Leadership</h2>
+      <p>As the <strong>Women Techmakers Ambassador</strong> for Hyderabad and <strong>Pakistan Lead for the IEEE AI Caravan</strong>, I lead global and local community initiatives to make women in technology and emerging AI engineers more visible, supported, and equipped to lead.</p>
 
       <div class="table-container">
         <table>
@@ -507,7 +655,7 @@
     </section>
 
     <!-- FEATURED PROJECTS -->
-    <section>
+    <section id="projects">
       <h2>🔥 Featured Projects</h2>
 
       <h3>🤖 Generative & Agentic AI</h3>
@@ -790,5 +938,23 @@
 
   </div>
 
+  <script>
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Close mobile menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
