@@ -21,11 +21,940 @@
       --accent-orange: #f0883e;
       --accent-red: #f85149;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     html {
       scroll-behavior: smooth;
     }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 85px 14px 60px 14px;
+    }
+
+    /* TOP NAVBAR (Inspired by Amit K Das, themed for Robina) */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-bottom: 1px solid var(--border-color);
+      height: 64px;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-brand:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4285F4;
+      display: inline-block;
+      box-shadow: 0 0 8px rgba(66, 133, 244, 0.8);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: #21262d;
+    }
+
+    .nav-cv-btn {
+      color: #ffffff !important;
+      background: #238636 !important;
+      font-weight: 600 !important;
+      border: 1px solid #2ea043;
+      padding: 6px 14px !important;
+      margin-left: 6px;
+    }
+
+    .nav-cv-btn:hover {
+      background: #2ea043 !important;
+      box-shadow: 0 2px 8px rgba(46, 160, 67, 0.4);
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #161b22;
+        flex-direction: column;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 8px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        width: 100%;
+        text-align: left;
+      }
+      .nav-cv-btn {
+        margin-left: 0;
+        text-align: center !important;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* GOOGLE 4-COLOR ACCENT STRIPE */
+    .google-stripe {
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(90deg, #4285F4 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75% 100%);
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    /* HEADER */
+    .header-section {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-gif {
+      border-radius: 50%;
+      border: 3px solid #4285F4;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 15px rgba(66, 133, 244, 0.25);
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .typing-headline {
+      max-width: 100%;
+      height: auto;
+      margin: 8px 0;
+    }
+
+    .location-tags {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin: 10px 0 16px 0;
+      font-weight: 500;
+    }
+
+    .badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .badge-wrap a img {
+      transition: transform 0.2s ease, filter 0.2s ease;
+      border-radius: 4px;
+    }
+
+    .badge-wrap a:hover img {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .banner-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* SECTION HEADERS */
+    h2 {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin: 36px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: var(--accent-blue);
+      margin: 20px 0 10px 0;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: #c9d1d9;
+    }
+
+    ul {
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #c9d1d9;
+    }
+
+    li strong {
+      color: #ffffff;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .book-card {
+      background: linear-gradient(180deg, #161b22 0%, #1f242c 100%);
+      border: 1.5px solid #f0883e;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .book-card h3 {
+      color: #f0883e;
+      margin-top: 10px;
+      font-size: 1.25rem;
+    }
+
+    .book-card p {
+      max-width: 700px;
+      margin: 8px auto 14px auto;
+      color: #8b949e;
+    }
+
+    /* AWARDS LIST */
+    .award-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid #4285F4;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+    }
+
+    .award-item.purple { border-left-color: #7928CA; }
+    .award-item.orange { border-left-color: #FF5722; }
+    .award-item.green { border-left-color: #34A853; }
+    .award-item.red { border-left-color: #E11D48; }
+
+    .award-head {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .award-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* TABLES */
+    .table-container {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: #21262d;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #1c2128;
+    }
+
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    /* STATS & TECH STACK */
+    .center-block {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .stats-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--accent-purple);
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.25rem; }
+      body { padding: 12px 10px 40px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-dot"></span>
+        Robina Mirbahar
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#awards">Awards & Honors</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="CV_Robina_Mirbahar.pdf" target="_blank" class="nav-cv-btn">CV (PDF)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="google-stripe"></div>
+
+    <!-- HEADER / PROFILE -->
+    <header class="header-section" id="top">
+      <img src="https://raw.githubusercontent.com/RobinaMirbahar/RobinaMirbahar/main/ProfileImages/Hi-Robina.gif" height="85" width="85" alt="Hi Robina" class="profile-gif">
+
+      <h1>Robina Mirbahar</h1>
+
+      <!-- Dynamic Typing SVG Headline -->
+      <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=4285F4&center=true&vCenter=true&width=750&lines=Google+Developer+Expert+(AI+%26+Cloud);Co-Author+of+'AI+Engineering'+(2026);Instructor+%40+IEEE+AI+Caravan+(94+Countries);Women+Techmakers+Ambassador;Multi-Cloud+%26+Generative+AI+Solutions+Architect" alt="Robina Mirbahar - Dynamic Title" class="typing-headline" />
+
+      <div class="location-tags">
+        📍 Hyderabad, Pakistan &nbsp;|&nbsp; 🥑 GDE (AI & Cloud) &nbsp;|&nbsp; 🇵🇰 IEEE AI Caravan PK Lead &nbsp;|&nbsp; 📚 Published Co-Author &nbsp;|&nbsp; 🎤 Global Speaker
+      </div>
+
+      <!-- Social Badges -->
+      <div class="badge-wrap">
+        <a href="https://linkedin.com/in/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+        <a href="https://amazon.com/dp/B0GWCZWCF4" target="_blank"><img src="https://img.shields.io/badge/Amazon-Book%20(2026)-FF9900?style=for-the-badge&logo=amazon&logoColor=white" alt="Amazon Book"></a>
+        <a href="https://developers.google.com/profile/u/106918534005910641104" target="_blank"><img src="https://img.shields.io/badge/GDE%20Profile-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="GDE Profile"></a>
+        <a href="https://dev.to/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/DEV-Articles-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white" alt="DEV Articles"></a>
+        <a href="https://www.youtube.com/@robinacodesai" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
+        <a href="https://twitter.com/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X/Twitter"></a>
+        <a href="https://stackoverflow.com/users/21196122/robina-mirbahar" target="_blank"><img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow"></a>
+        <a href="https://www.credly.com/users/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/Credly-FF6B35?style=for-the-badge&logo=credly&logoColor=white" alt="Credly"></a>
+      </div>
+
+      <img src="https://raw.githubusercontent.com/RobinaMirbahar/RobinaMirbahar/main/ProfileImages/GithubBanner.svg" alt="Robina Mirbahar Banner" class="banner-img">
+    </header>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+      <h2>👩💼 About Me</h2>
+      <p>
+        AI Researcher, Cloud Solutions Architect, and Co-Author with 6+ years of experience designing scalable multi-cloud infrastructure and building production-grade Generative AI systems. I bridge cutting-edge AI research with production engineering while empowering global tech communities and championing women in STEM.
+      </p>
+      <ul>
+        <li>🤖 <strong>Agentic AI & Generative Systems</strong> — Multi-Agent Loops · Advanced RAG · Gemma & Gemini APIs · LangGraph</li>
+        <li>🇵🇰 <strong>Pakistan Lead @ IEEE AI Caravan</strong> — Leading national initiatives across a global network of 94 countries</li>
+        <li>📚 <strong>Published Co-Author</strong> — Co-Author of <em>"AI Engineering: From Classical ML to RAG & Agentic AI Systems"</em> (2026)</li>
+        <li>🔬 <strong>Peer Reviewer</strong> — Women in Machine Learning (WiML) at <strong>NeurIPS 2026</strong></li>
+        <li>☁️ <strong>Multi-Cloud Architect</strong> — Google Cloud Platform · AWS · Microsoft Azure · Kubernetes · Terraform</li>
+        <li>🚀 <strong>Mentor @ Google for Startups</strong> — Advising AI/ML founders on architecture and scalability</li>
+        <li>💜 <strong>Women Techmakers Ambassador</strong> — Chapter Lead, Hyderabad, Pakistan</li>
+      </ul>
+    </section>
+
+    <!-- PUBLISHED LITERATURE -->
+    <section id="book">
+      <h2>📖 Published Literature</h2>
+      <div class="book-card">
+        <a href="https://amazon.com/dp/B0GWCZWCF4" target="_blank">
+          <img src="https://img.shields.io/badge/Read%20on%20Amazon-AI%20Engineering%20(2026)-FF9900?style=for-the-badge&logo=amazon&logoColor=white" alt="Amazon Book">
+        </a>
+        <h3>📘 AI Engineering: From Classical ML to RAG & Agentic AI Systems (2026)</h3>
+        <p>
+          An end-to-end practical guide bridging classical machine learning theory with modern enterprise RAG pipelines, autonomous multi-agent coordination, and resilient cloud-to-edge deployment.
+        </p>
+        <a href="https://amazon.com/dp/B0GWCZWCF4" target="_blank" style="font-weight: 700; color: #f0883e;">👉 Available on Amazon</a>
+      </div>
+    </section>
+
+    <!-- HONORS & AWARDS -->
+    <section id="awards">
+      <h2>🌟 Major Honors & Industry Awards</h2>
+
+      <div class="award-item purple">
+        <div class="award-head">🏅 Winner: Cross-Cutting Leader (Women in Tech / Community / Global Impact)</div>
+        <div class="award-badges">
+          <a href="https://awards.server4sale.com.pk/legacy-winners" target="_blank"><img src="https://img.shields.io/badge/Server4Sale_Awards-Legacy_Winner-7928CA?style=flat-square&logo=awesomelists&logoColor=white" alt="Legacy Winner"></a>
+        </div>
+      </div>
+
+      <div class="award-item orange">
+        <div class="award-head">🏅 Winner: Future Leaders Award 2025 (Global Impact Creator)</div>
+        <div class="award-badges">
+          <a href="https://itcnasia.com/" target="_blank"><img src="https://img.shields.io/badge/ITCN_Asia-Future_Leaders_Award_2025-FF5722?style=flat-square" alt="Future Leaders"></a>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-head">✅ Google Developer Expert (GDE) in AI & Cloud</div>
+        <div class="award-badges">
+          <a href="https://developers.google.com/profile/u/106918534005910641104" target="_blank"><img src="https://img.shields.io/badge/Google_Developers-GDE_Profile-4285F4?style=flat-square&logo=google&logoColor=white" alt="GDE Profile"></a>
+          <a href="https://developers.google.com/community/experts" target="_blank"><img src="https://img.shields.io/badge/Google_Experts-Community_Directory-34A853?style=flat-square&logo=googlecloud&logoColor=white" alt="Directory"></a>
+        </div>
+      </div>
+
+      <div class="award-item red">
+        <div class="award-head">✅ Pakistan Lead — IEEE Computer Society R8 AI Caravan (2026) (Spanning 94 Countries)</div>
+        <div class="award-badges">
+          <a href="https://aicaravan.org" target="_blank"><img src="https://img.shields.io/badge/IEEE_AI_Caravan-aicaravan.org-E11D48?style=flat-square" alt="AI Caravan"></a>
+          <a href="https://lnkd.in/da5Dd_rK" target="_blank"><img src="https://img.shields.io/badge/Global_Launch-Announcement-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="Launch Announcement"></a>
+        </div>
+      </div>
+
+      <div class="award-item green">
+        <div class="award-head">✅ Peer Reviewer — Women in Machine Learning (WiML) @ NeurIPS 2026</div>
+        <div class="award-badges">
+          <a href="https://wimlworkshop.github.io/" target="_blank"><img src="https://img.shields.io/badge/WiML-Workshop_Reviewer-8E75B6?style=flat-square" alt="WiML Reviewer"></a>
+          <a href="https://neurips.cc/" target="_blank"><img src="https://img.shields.io/badge/NeurIPS-Conference-2E7D32?style=flat-square" alt="NeurIPS"></a>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <div class="award-head">✅ Google Cloud Champion Innovator — Pakistan's First and Only</div>
+        <div class="award-badges">
+          <a href="https://cloud.google.com/innovators/champions" target="_blank"><img src="https://img.shields.io/badge/Google_Cloud-Champion_Innovator-4285F4?style=flat-square&logo=googlecloud&logoColor=white" alt="Champion Innovator"></a>
+        </div>
+      </div>
+
+      <div class="award-item red">
+        <div class="award-head">🛡️ CompTIA Subject Matter Expert (SME) & Technical Trainer</div>
+        <div class="award-badges">
+          <a href="https://www.comptia.org/certifications/subject-matter-experts" target="_blank"><img src="https://img.shields.io/badge/CompTIA-Subject_Matter_Expert-C8102E?style=flat-square" alt="CompTIA SME"></a>
+          <a href="https://www.credly.com/users/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/Credly-Verified_Credentials-FF6B35?style=flat-square&logo=credly&logoColor=white" alt="Credly Verified"></a>
+        </div>
+      </div>
+
+      <h3>☁️ Cloud & DevOps Certifications</h3>
+      <ul>
+        <li>✅ <strong>Google Cloud</strong> Professional Cloud Architect</li>
+        <li>✅ <strong>AWS</strong> Certified Solutions Architect – Associate</li>
+        <li>✅ <strong>Microsoft Azure</strong> Solutions Architect Expert</li>
+        <li>✅ <strong>Linux Foundation</strong> Certified Kubernetes Administrator (CKA)</li>
+      </ul>
+
+      <div class="badge-wrap" style="margin-top: 14px;">
+        <a href="https://www.credly.com/users/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/Verified%20Badges%20on%20Credly-FF6B35?style=for-the-badge&logo=credly&logoColor=white" alt="Credly"></a>
+        <a href="https://developers.google.com/profile/u/106918534005910641104" target="_blank"><img src="https://img.shields.io/badge/Google%20Developer%20Profile-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Dev"></a>
+        <a href="https://awards.server4sale.com.pk/legacy-winners" target="_blank"><img src="https://img.shields.io/badge/Legacy%20Winner-Cross--Cutting%20Leader-blueviolet?style=for-the-badge" alt="Award"></a>
+      </div>
+    </section>
+
+    <!-- WTM HYDERABAD & LEADERSHIP -->
+    <section id="leadership">
+      <h2>🌟 Women Techmakers & Community Leadership</h2>
+      <p>As the <strong>Women Techmakers Ambassador</strong> for Hyderabad and <strong>Pakistan Lead for the IEEE AI Caravan</strong>, I lead global and local community initiatives to make women in technology and emerging AI engineers more visible, supported, and equipped to lead.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">Attribute</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📍 <strong>Location</strong></td>
+              <td>Hyderabad, Sindh, Pakistan</td>
+            </tr>
+            <tr>
+              <td>👥 <strong>Community</strong></td>
+              <td>2,200+ Members on LinkedIn</td>
+            </tr>
+            <tr>
+              <td>🎯 <strong>Focus Areas</strong></td>
+              <td>Generative AI · Cloud Architecture · Mentorship · Leadership</td>
+            </tr>
+            <tr>
+              <td>📧 <strong>Contact</strong></td>
+              <td><code>women.techmakers.hyd.pk@gmail.com</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="badge-wrap" style="margin-top: 12px;">
+        <a href="https://www.linkedin.com/company/women-techmaker-hyderabad-pakistan" target="_blank"><img src="https://img.shields.io/badge/WTM%20Hyderabad-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="WTM LinkedIn"></a>
+        <a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank"><img src="https://img.shields.io/badge/WTM%20Hyderabad-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="WTM Facebook"></a>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="projects">
+      <h2>🔥 Featured Projects</h2>
+
+      <h3>🤖 Generative & Agentic AI</h3>
+      <div class="project-grid">
+        <div class="project-card">
+          <h4><a href="https://github.com/RobinaMirbahar/Comic-Studio-Ai" target="_blank">Comic Studio AI</a></h4>
+          <p>Multi-Agent Comic Generator powered by Google Gemini API. Creates full stories, consistent character layouts, and multi-language panels. Built with FastAPI and deployed on Google Cloud Run.</p>
+          <div class="project-tags">
+            <a href="https://github.com/RobinaMirbahar/Comic-Studio-Ai" target="_blank"><img src="https://img.shields.io/github/stars/RobinaMirbahar/Comic-Studio-Ai?style=social" alt="Stars"></a>
+            <img src="https://img.shields.io/badge/Python-3.11-blue?style=flat-square" alt="Python">
+            <img src="https://img.shields.io/badge/FastAPI-0.115-green?style=flat-square" alt="FastAPI">
+            <img src="https://img.shields.io/badge/Google%20Gemini-8E75B6?style=flat-square&logo=googlegemini&logoColor=white" alt="Gemini">
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h4><a href="https://github.com/RobinaMirbahar/vertex-ai-imagen3-colab" target="_blank">Vertex AI Imagen 3 Colab</a></h4>
+          <p>Studio-quality AI image synthesis pipelines using Vertex AI Imagen 3 and Google Colab.</p>
+          <div class="project-tags">
+            <a href="https://github.com/RobinaMirbahar/vertex-ai-imagen3-colab" target="_blank"><img src="https://img.shields.io/github/stars/RobinaMirbahar/vertex-ai-imagen3-colab?style=social" alt="Stars"></a>
+            <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white" alt="Jupyter">
+          </div>
+        </div>
+      </div>
+
+      <h3>☁️ Cloud, DevOps & Infrastructure</h3>
+      <div class="project-grid">
+        <div class="project-card">
+          <h4><a href="https://github.com/RobinaMirbahar/multi-cloud-terraform" target="_blank">Multi-Cloud Terraform</a></h4>
+          <p>Infrastructure as Code (IaC) enterprise blueprints across AWS, Azure, and GCP.</p>
+          <div class="project-tags">
+            <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white" alt="Terraform">
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h4><a href="https://github.com/RobinaMirbahar/cloud-run-demos" target="_blank">Cloud Run Demos</a></h4>
+          <p>Serverless container deployment patterns for AI/ML microservices on Google Cloud Run.</p>
+          <div class="project-tags">
+            <img src="https://img.shields.io/badge/Cloud%20Run-4285F4?style=flat-square&logo=googlecloud&logoColor=white" alt="Cloud Run">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH TALKS & KEYNOTES -->
+    <section>
+      <h2>🎤 Tech Talks, Keynotes & Workshops</h2>
+      <p>An active portfolio of international and national speaking engagements, technical workshops, and developer panels (2023–2026).</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 10%; text-align: center;">Year</th>
+              <th style="width: 25%;">Event</th>
+              <th style="width: 35%;">Role / Topic</th>
+              <th style="width: 15%;">Location</th>
+              <th style="width: 15%; text-align: center;">Verified Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center;"><strong>2026</strong></td>
+              <td><strong>PyCon Austria 2026</strong></td>
+              <td>Workshop Facilitator: <em>"Hands-On: Building AI Applications in Python"</em></td>
+              <td>Austria (Virtual)</td>
+              <td style="text-align: center;"><a href="https://pycon.at/" target="_blank">PyCon AT</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2026</strong></td>
+              <td><strong>DevFest Baku 2026</strong></td>
+              <td>Speaker: <em>"Building Production Agentic AI Systems with Google Cloud"</em></td>
+              <td>Baku, Azerbaijan</td>
+              <td style="text-align: center;"><a href="https://gdg.community.dev/" target="_blank">DevFest Baku</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2026</strong></td>
+              <td><strong>IEEE CS R8 AI Caravan</strong></td>
+              <td>Pakistan Lead & Curriculum Committee (Launch across 94 countries)</td>
+              <td>Global (Virtual)</td>
+              <td style="text-align: center;"><a href="https://lnkd.in/da5Dd_rK" target="_blank">Announcement</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2026</strong></td>
+              <td><strong>GDG Surrey (UK)</strong></td>
+              <td>Speaker: <em>"Designing AI Systems With and Without Agents"</em></td>
+              <td>Surrey, UK (Virtual)</td>
+              <td style="text-align: center;"><a href="https://gdg.community.dev/events/details/google-gdg-surrey-presents-day-1-how-to-design-ai-systems/" target="_blank">Event Link</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2025</strong></td>
+              <td><strong>ITCN Asia 2025</strong></td>
+              <td>Future Leaders Keynote & Award Ceremony: <em>Global Impact Creator</em></td>
+              <td>Karachi, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank">ITCN Asia</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2025</strong></td>
+              <td><strong>AWS Cloud Club MUET</strong></td>
+              <td>Speaker & Instructor: <em>"Getting Started with AWS Solutions"</em></td>
+              <td>Jamshoro, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.meetup.com/aws-cloud-club-at-muet-jamshoro-pakistan/events/308684797/" target="_blank">Meetup Link</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2025</strong></td>
+              <td><strong>GDG on Campus UMT Lahore</strong></td>
+              <td>Speaker: <em>"Building Smart Apps with Google AI Technologies"</em></td>
+              <td>Lahore, Pakistan</td>
+              <td style="text-align: center;"><a href="https://gdg.community.dev/events/details/google-gdg-on-campus-university-of-management-and-technology-lahore-pakistan-presents-building-smart-apps-with-google-ai-technologies-build-with-ai/" target="_blank">Event Link</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2025</strong></td>
+              <td><strong>Women Techmakers IWD 2025</strong></td>
+              <td>Keynote Speaker & Event Organizer: <em>#RedefinePossible (200+ attendees)</em></td>
+              <td>Jamshoro, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank">Recap</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2024</strong></td>
+              <td><strong>KCD Islamabad 2024</strong></td>
+              <td>Speaker: <em>"Cloud-Native Architectures & Multi-Cloud Kubernetes"</em></td>
+              <td>Islamabad, Pakistan</td>
+              <td style="text-align: center;"><a href="https://community.cncf.io/" target="_blank">KCD Link</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2024</strong></td>
+              <td><strong>CloudSeekho Season 5</strong></td>
+              <td>Campaign Lead & Mentor (Collaborating with GDSC MUET)</td>
+              <td>Sindh, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.linkedin.com/posts/hasnainkk_devfest-cloudseekho-gcc-activity-7252166405461057536-JDx7" target="_blank">LinkedIn Post</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2024</strong></td>
+              <td><strong>Women Techmakers IWD 2024</strong></td>
+              <td>Keynote Speaker: <em>"Impact the Future with Gemini & Vertex AI"</em></td>
+              <td>Hyderabad, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank">Recap</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2024</strong></td>
+              <td><strong>WTM Global Campaign Launch</strong></td>
+              <td>Panelist & Speaker: <em>"Impact the Future with AI" Announcement</em></td>
+              <td>Virtual</td>
+              <td style="text-align: center;"><a href="https://www.linkedin.com/posts/robinamirbahar_ai-internationalwomensday2024-googleai-activity-7166854398898376705-sJ38" target="_blank">Announcement</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2023</strong></td>
+              <td><strong>DevFest Sindh 2023</strong></td>
+              <td>Main Host & MC <em>(1,000+ attendees)</em></td>
+              <td>Karachi, Pakistan</td>
+              <td style="text-align: center;"><a href="https://gdg.community.dev/events/details/google-gdg-kolachi-presents-devfest-sindh-2023-techsaymustaqbil/" target="_blank">GDG Kolachi</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2023</strong></td>
+              <td><strong>Road to DevFest Sindh 2023</strong></td>
+              <td>Host / MC & Organizer <em>(300+ attendees)</em></td>
+              <td>Jamshoro, Pakistan</td>
+              <td style="text-align: center;"><a href="https://gdg.community.dev/events/details/google-gdg-kolachi-presents-road-to-devfest-sindh-2023-techsayuraan/" target="_blank">GDG Kolachi</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2023</strong></td>
+              <td><strong>DevFest Hyderabad</strong></td>
+              <td>Co-Organizer & Technical Speaker</td>
+              <td>Hyderabad, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank">Recap</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>2023</strong></td>
+              <td><strong>Build with AI Workshop</strong></td>
+              <td>Workshop Lead: <em>Building AI Apps with Gemini & Gemma</em></td>
+              <td>Hyderabad, Pakistan</td>
+              <td style="text-align: center;"><a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank">Event Page</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TECH STACK & SKILLS -->
+    <section>
+      <h2>🛠️ Tech Stack & Skills</h2>
+
+      <div class="center-block">
+        <h3>🤖 AI & Machine Learning</h3>
+        <div class="badge-wrap">
+          <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+          <img src="https://img.shields.io/badge/Google%20Gemini-8E75B6?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Google Gemini">
+          <img src="https://img.shields.io/badge/Google%20Gemma-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemma">
+          <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain">
+          <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
+          <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face">
+          <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+        </div>
+
+        <h3>☁️ Cloud & Container Platforms</h3>
+        <div class="badge-wrap">
+          <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="Google Cloud">
+          <img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS">
+          <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white" alt="Azure">
+          <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
+          <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+          <img src="https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform">
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE GITHUB & COMMUNITY STATS -->
+    <section>
+      <h2>📊 Live GitHub & Community Stats</h2>
+
+      <div class="center-block">
+        <div class="stats-row">
+          <img src="https://github-readme-stats.vercel.app/api?username=RobinaMirbahar&show_icons=true&theme=react&hide_border=true&bg_color=161B22" alt="Robina's GitHub Stats" class="stats-img">
+          <img src="https://github-readme-streak-stats.herokuapp.com/?user=RobinaMirbahar&theme=react&hide_border=true&background=161B22" alt="Robina's GitHub Streak" class="stats-img">
+        </div>
+        <div>
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=RobinaMirbahar&layout=compact&theme=react&hide_border=true&bg_color=161B22" alt="Top Languages" class="stats-img">
+        </div>
+      </div>
+
+      <div class="center-block" style="margin-top: 24px;">
+        <h3>🏆 Stack Overflow Impact</h3>
+        <div style="margin-bottom: 10px;">
+          <a href="https://stackoverflow.com/users/21196122/robina-mirbahar" target="_blank">
+            <img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow">
+          </a>
+        </div>
+        <div class="table-container" style="max-width: 480px; margin: 0 auto;">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center;">Metric</th>
+                <th style="text-align: center;">Achievement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center;"><strong>Reputation</strong></td>
+                <td style="text-align: center;">719+</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"><strong>Answers Provided</strong></td>
+                <td style="text-align: center;">31+</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"><strong>Developers Reached</strong></td>
+                <td style="text-align: center;">23,000+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECT -->
+    <footer>
+      <h2>🤝 Connect with Me</h2>
+      <div class="badge-wrap" style="margin-top: 14px;">
+        <a href="https://linkedin.com/in/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+        <a href="https://amazon.com/dp/B0GWCZWCF4" target="_blank"><img src="https://img.shields.io/badge/Amazon-Book-FF9900?style=for-the-badge&logo=amazon&logoColor=white" alt="Amazon"></a>
+        <a href="https://developers.google.com/profile/u/106918534005910641104" target="_blank"><img src="https://img.shields.io/badge/GDE%20Profile-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="GDE Profile"></a>
+        <a href="https://dev.to/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/DEV-Community-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white" alt="DEV"></a>
+        <a href="https://www.youtube.com/@robinacodesai" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
+        <a href="https://twitter.com/robinamirbahar" target="_blank"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X/Twitter"></a>
+        <a href="https://www.facebook.com/womentechmakershyderabadpakistan/" target="_blank"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"></a>
+      </div>
+
+      <div class="quote">
+        "Empowering women in tech, one line of code at a time."
+      </div>
+
+      <div>
+        <img src="https://komarev.com/ghpvc/?username=RobinaMirbahar&color=blueviolet&style=flat-square" alt="Profile views">
+      </div>
+      <p style="margin-top: 14px; font-size: 0.8rem; color: #484f58;">
+        © 2026 Robina Mirbahar · Hosted with GitHub Pages
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Close mobile menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
