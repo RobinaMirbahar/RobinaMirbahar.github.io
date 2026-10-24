@@ -48,3 +48,17 @@ Official Portfolio & Interactive AI Engineering Showcase of Robina Mirbahar — 
 <div align="center">
   <img src="https://raw.githubusercontent.com/RobinaMirbahar/RobinaMirbahar/main/ProfileImages/GithubBanner.svg" alt="Robina Mirbahar Banner" width="100%" />
 </div>
+
+---
+
+## Star, Fork & Sponsor This Project
+
+[![Star on GitHub](https://img.shields.io/github/stars/RobinaMirbahar/RobinaMirbahar.github.io?style=for-the-badge&logo=github&label=Star)](https://github.com/RobinaMirbahar/RobinaMirbahar.github.io)
+[![Fork on GitHub](https://img.shields.io/github/forks/RobinaMirbahar/RobinaMirbahar.github.io?style=for-the-badge&logo=github&label=Fork)](https://github.com/RobinaMirbahar/RobinaMirbahar.github.io/fork)
+[![Sponsor RobinaMirbahar](https://img.shields.io/badge/Sponsor-%40RobinaMirbahar-ea4aaa?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/RobinaMirbahar)
+
+If this project is helpful to your work:
+* **Star this Repository:** [**Star `RobinaMirbahar/RobinaMirbahar.github.io` on GitHub**](https://github.com/RobinaMirbahar/RobinaMirbahar.github.io) to bookmark it and help others discover it.
+* **Fork & Customize:** [**Fork `RobinaMirbahar/RobinaMirbahar.github.io`**](https://github.com/RobinaMirbahar/RobinaMirbahar.github.io/fork) to build and experiment with your own workflows.
+* **Sponsor on GitHub:** [**Sponsor `@RobinaMirbahar` on GitHub Sponsors (`github.com/sponsors/RobinaMirbahar`)**](https://github.com/sponsors/RobinaMirbahar) to support open-source AI, Google Cloud, and Gemini engineering projects!
+
