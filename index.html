@@ -884,6 +884,8 @@
         <li><a href="#book">Book</a></li>
         <li><a href="#awards">Honors</a></li>
         <li><a href="#talks">Talks (25+)</a></li>
+        <li><a href="#gde-wtm-impact-gallery" onclick="window.filterImpact && window.filterImpact('gde')">GDE</a></li>
+        <li><a href="#gde-wtm-impact-gallery" onclick="window.filterImpact && window.filterImpact('wtm')">WTM</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#print-cv" onclick="window.print(); return false;" class="nav-cv-btn">🖨️ Save CV (PDF)</a></li>
       </ul>
@@ -1562,6 +1564,15 @@
           <button type="button" data-filter="articles" style="cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.82rem;font-weight:600;">Articles &amp; Open Source</button>
           <button type="button" data-filter="mentoring" style="cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.05);color:#e2e8f0;font-size:0.82rem;font-weight:600;">Mentoring &amp; Judging</button>
         </div>
+      </div>
+      <div id="wtm-chapter-banner" style="margin-bottom:18px;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(56,189,248,0.08));border:1px solid rgba(52,211,153,0.32);">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;">
+          <strong style="font-size:1.02rem;color:#6ee7b7;">💚 Women Techmakers (WTM) — Hyderabad, Sindh, Pakistan Chapter</strong>
+          <a href="https://www.youtube.com/@womentechmakerhydpakistan" target="_blank" rel="noopener noreferrer" style="color:#34d399;font-size:0.84rem;font-weight:600;text-decoration:none;">@womentechmakerhydpakistan →</a>
+        </div>
+        <p style="margin:0;font-size:0.88rem;line-height:1.55;opacity:0.9;">
+          Led by <strong>Robina Mirbahar</strong> (Google Women Techmakers Ambassador), the <strong>WTM Hyderabad, Pakistan</strong> chapter unites <strong>2,200+ developers, students, and women in tech</strong> across Sindh through International Women's Day (IWD) flagship summits, Cloud &amp; AI mentorship circles, hands-on workshops, and career-readiness sessions empowering underrepresented builders to thrive in Google Cloud and Generative AI.
+        </p>
       </div>
       <div id="impact-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;">
         
@@ -2273,10 +2284,8 @@
         (function(){
           var bar = document.getElementById('impact-filters');
           if (!bar) return;
-          bar.addEventListener('click', function(e){
-            var btn = e.target.closest('button[data-filter]');
-            if (!btn) return;
-            var f = btn.getAttribute('data-filter');
+          window.filterImpact = function(f) {
+            var btn = bar.querySelector('button[data-filter="' + f + '"]');
             bar.querySelectorAll('button').forEach(function(b){
               b.style.background = b === btn ? 'rgba(59,130,246,0.25)' : 'rgba(255,255,255,0.05)';
               b.style.borderColor = b === btn ? 'rgba(96,165,250,0.6)' : 'rgba(255,255,255,0.18)';
@@ -2285,6 +2294,13 @@
               var show = (f === 'all') || (c.getAttribute('data-program') === f) || (c.getAttribute('data-cat') === f);
               c.style.display = show ? 'flex' : 'none';
             });
+            var banner = document.getElementById('wtm-chapter-banner');
+            if (banner) banner.style.display = (f === 'all' || f === 'wtm') ? 'block' : 'none';
+          };
+          bar.addEventListener('click', function(e){
+            var btn = e.target.closest('button[data-filter]');
+            if (!btn) return;
+            window.filterImpact(btn.getAttribute('data-filter'));
           });
         })();
       </script>
