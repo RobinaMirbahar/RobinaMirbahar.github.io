@@ -61,7 +61,7 @@
     }
 
     .nav-inner {
-      max-width: 1060px;
+      max-width: 1220px;
       margin: 0 auto;
       height: 100%;
       padding: 0 16px;
@@ -79,6 +79,8 @@
       align-items: center;
       gap: 10px;
       letter-spacing: -0.3px;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: color 0.2s ease;
     }
 
@@ -101,15 +103,18 @@
       display: flex;
       list-style: none;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 7px 11px;
+      padding: 6px 8px;
+      white-space: nowrap;
+      display: inline-block;
       border-radius: 6px;
       transition: all 0.2s ease;
     }
@@ -125,8 +130,10 @@
       background: linear-gradient(135deg, #238636, #2ea043) !important;
       font-weight: 700 !important;
       border: 1px solid #3fb950;
-      padding: 6px 13px !important;
-      margin-left: 6px;
+      padding: 6px 11px !important;
+      margin-left: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
       cursor: pointer;
     }
 
